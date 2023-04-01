@@ -1,0 +1,64 @@
+<style>
+body {
+    height: 100%;
+    background: linear-gradient(90deg, #C0C0C0	 50%, #A0A0A0 50%);
+}
+
+textarea {
+resize: none;
+font-size: 20px;
+top:360;
+position:absolute;
+}
+
+input {
+font-size: 15px;
+top:620;
+position:absolute;
+}
+</style>
+
+
+<meta charset="utf-8">
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>localhost</title>
+    </head>
+    <body>
+        <div>
+            <div style="width:50%; height: 45%; float:left; overflow: scroll; ">
+            <h2 style="font-size: 35px; color:DarkOrange; font-weight:bold; height: 15px;">Funcions:</h2>
+                <div style= "height: 50%">
+               {%block functions%}
+               <ul>
+                 {%for key, param in func.items()%}
+                    <li style= "font-size: 22px;"> {{key}} {{param}} </li>
+                 {%endfor%}
+               </ul>
+               </div>
+               {%endblock%}
+                <h2 style="top: 280; color:blue; font-weight:bold; font-size: 35px; position:absolute; ">Consola:</h2>
+               {%block consola%}
+               <form action="" method="POST">
+                 <p><textarea class="content" type="text" rows="10" cols="45" name="content" id="content" ></textarea></p>
+                 <input type ="submit" value="Submit"/>
+               </form>
+               {%endblock%}
+            </div>
+            <div style="width:50%; float:right;">
+                <h2 style="margin-left: 30px; color:green; font-size: 35px;font-weight:bold;">Resultats:</h2>
+                {%block resultats%}
+                <ul>
+                 {%for n in range(ent|length, count, -1)%}
+                    <p style= "font-size: 20px"/> {{"In "}} {{n}} {{": "}} {{ent[n - 1]}} 
+                    </p>
+                    <p style= "font-size: 20px"/> {{"Out "}} {{n}} {{": "}} {{res[n - 1]}}
+                    </p>
+                 {%endfor%}
+               </ul>
+               {%endblock%}
+            </div>
+        </div>
+    </body>
+</html>
